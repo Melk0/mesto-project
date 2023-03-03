@@ -3,4 +3,9 @@
     align-self: center;
     margin-right: 20px;
     margin-bottom: 5px;
+    transition: opacity 1s;
+}
+
+.card__like:hover{
+    opacity: .5;
 }

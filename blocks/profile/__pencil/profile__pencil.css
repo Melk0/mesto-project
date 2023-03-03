@@ -1,0 +1,15 @@
+.profile__pencil{
+    align-self: end;
+    margin-bottom: 8px;
+}
+
+
+@media screen and (max-width: 1279px){
+    .profile__pencil{
+        grid-column: 1/-1;
+        grid-row: 2/2;
+        justify-self: end;
+        width: 18px;
+        margin-right: 19px;
+    }
+}

@@ -1,0 +1,4 @@
+.card__like_active{
+    mask-image: url(../../../../images/active-heart.svg);
+    background-color: black;
+}
