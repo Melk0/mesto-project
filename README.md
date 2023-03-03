@@ -12,4 +12,4 @@
 
 **Ссылка на GitHub Pages**
 
-https://melk0.github.io//
+https://melk0.github.io/mesto-project/

@@ -1,8 +1,12 @@
 .profile__pencil{
     align-self: end;
     margin-bottom: 8px;
+    transition: opacity 1s;
 }
 
+.profile__pencil:hover{
+    opacity: .6;
+}
 
 @media screen and (max-width: 1279px){
     .profile__pencil{
