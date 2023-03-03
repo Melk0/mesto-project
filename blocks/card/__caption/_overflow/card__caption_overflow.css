@@ -1,0 +1,6 @@
+.card__caption_overflow{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 29px;
+}

@@ -1,0 +1,9 @@
+.button{
+    width: 22px;
+}
+
+@media screen and (max-width: 1279px){
+    .button{
+        width: 16px;
+    }
+}

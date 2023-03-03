@@ -1,0 +1,6 @@
+.card__like{
+    justify-self: end;
+    align-self: center;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}

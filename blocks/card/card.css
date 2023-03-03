@@ -1,0 +1,16 @@
+.card{
+    max-width: 282px;
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    grid-template-columns: max-content 1fr;
+    background-color: white;
+    border-radius: 10px;
+    max-height: 361px;
+}
+
+@media screen and (max-width: 970px){
+    .card{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
