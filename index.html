@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Проект: Место</title>
 </head>
-<body>
+<body class="body">
   <div class="page">
     <header class="header">
       <img src="./images/logo-min.svg" class="header__logo" alt="Логотип Mesto Russia">
@@ -17,43 +17,45 @@
         <h1 class="profile__title">
           Жак-Ив Кусто
         </h1>
-        <img src="./images/pencil-min.svg" alt="Карандаш" class="profile__pencil">
+        <button  type="button" class="profile__pencil" value="Изменить">
+          <img src="./images/pencil-min.svg" alt="Карандаш">
+        </button>
         <h2 class="profile__caption">
           Исследователь океана
         </h2>
-        <button class="profile__button">
+        <button type="button" class="profile__button">
           <img class="button" src="./images/plus.svg" alt="Кнопка «Добавить»">
         </button>
       </section>
       <section class="cards">
         <div class="card">
           <img src="images/karachaevsk-min.png" alt="Старый разрушенный храм" class="card__image">
-          <h3 class="card__caption">Карачаевск</h3>
+          <h2 class="card__caption">Карачаевск</h2>
           <img class="card__like card__like_active" src="./images/heart-min.svg" alt="Лайк">
         </div>
         <div class="card">
           <img src="images/elbrus-min.png" alt="Горы вдалеке на фоне оранжевого неба" class="card__image">
-          <h3 class="card__caption">Гора Эльбрус</h3>
+          <h2 class="card__caption">Гора Эльбрус</h2>
           <img class="card__like" src="./images/heart-min.svg" alt="Лайк">
         </div>
         <div class="card">
           <img src="images/dombay-min.svg" alt="Горная вершина на фоне леса" class="card__image">
-          <h3 class="card__caption">Домбай</h3>
+          <h2 class="card__caption">Домбай</h2>
           <img class="card__like" src="./images/heart-min.svg" alt="Лайк">
         </div>
         <div class="card">
           <img src="images/elbrus-min.png" alt="Горы вдалеке на фоне оранжевого неба" class="card__image">
-          <h3 class="card__caption">Гора Эльбрус</h3>
+          <h2 class="card__caption">Гора Эльбрус</h2>
           <img class="card__like" src="./images/heart-min.svg" alt="Лайк">
         </div>
         <div class="card">
           <img src="images/dombay-min.svg" alt="Горная вершина на фоне леса" class="card__image">
-          <h3 class="card__caption">Домбай</h3>
+          <h2 class="card__caption">Домбай</h2>
           <img class="card__like" src="./images/heart-min.svg" alt="Лайк">
         </div>
         <div class="card">
           <img src="images/karachaevsk-min.png" alt="Старый разрушенный храм" class="card__image">
-          <h3 class="card__caption card__caption_overflow">Карачаево-Черкессия</h3>
+          <h2 class="card__caption">Карачаево-Черкессия</h2>
           <img class="card__like" src="./images/heart-min.svg" alt="Лайк">
         </div>
       </section>
@@ -61,14 +63,17 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Mesto Russia</p>
     </footer>
-    <section class="popup">
-      <form action="" class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__field" value="Жак-Ив Кусто">
-        <input type="text" class="popup__field" value="Исследователь океана">
-        <input type="submit" class="popup__button" value="Сохранить">
-        <input type="button" class="popup__close">
-      </form>
+    <section class="popup popup_opened">
+      <div class="popup__container">
+        <input type="button" class="popup__close" value="Закрыть">
+        <form class="form" name="edit-profile">
+          <h2 class="form__title">Редактировать профиль</h2>
+          <input type="text" class="form__field" placeholder="Жак-Ив Кусто">
+          <input type="text" class="form__field" placeholder="Исследователь океана">
+          <button type="submit" class="form__button">Сохранить</button>
+        </form>
+      </div>
+
     </section>
   </div>
 </body>

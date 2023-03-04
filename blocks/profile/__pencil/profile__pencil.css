@@ -2,6 +2,10 @@
     align-self: end;
     margin-bottom: 8px;
     transition: opacity 1s;
+    background-color: #000;
+    border: none;
+    font-size: 0;
+    padding: 0;
 }
 
 .profile__pencil:hover{
@@ -13,7 +17,11 @@
         grid-column: 1/-1;
         grid-row: 2/2;
         justify-self: end;
-        width: 18px;
         margin-right: 19px;
+    }
+
+    .profile__pencil img{
+        width: 18px;
+        height: 18px;
     }
 }

@@ -9,6 +9,9 @@
     line-height: 48px;
     align-self: end;
     margin-left: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /*.profile__title::after{*/
