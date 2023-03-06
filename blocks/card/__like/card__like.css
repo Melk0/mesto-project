@@ -4,6 +4,12 @@
     margin-right: 20px;
     margin-bottom: 5px;
     transition: opacity 1s;
+    background-image: url(../../../images/heart-min.svg);
+    width: 22px;
+    height: 19px;
+    background-size: contain;
+    background-color: #FFFFFF;
+    border: none;
 }
 
 .card__like:hover{

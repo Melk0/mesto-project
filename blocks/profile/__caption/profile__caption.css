@@ -12,6 +12,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    width: calc(880px - 120px - 24px - 150px - 31px - 37px);
 }
 
 @media screen and (max-width: 1279px){
@@ -23,5 +24,6 @@
         text-align: center;
         margin-top: 6px;
         margin-left: 0;
+        width: calc(100% - 2 * 19px);
     }
 }

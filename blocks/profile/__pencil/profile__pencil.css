@@ -6,6 +6,9 @@
     border: none;
     font-size: 0;
     padding: 0;
+    background-image: url(../../../images/pencil-min.svg);
+    width: 24px;
+    height: 24px;
 }
 
 .profile__pencil:hover{
@@ -18,10 +21,10 @@
         grid-row: 2/2;
         justify-self: end;
         margin-right: 19px;
-    }
-
-    .profile__pencil img{
         width: 18px;
         height: 18px;
+        background-image: url(../../../images/pencil-min.svg);
+        background-size: contain;
     }
+
 }
