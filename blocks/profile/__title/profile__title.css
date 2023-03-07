@@ -33,7 +33,7 @@
         text-align: center;
         margin-top: 26px;
         margin-left: 0;
-        max-width: calc(100% - 65px - 66px);
+        max-width: calc(100% - 65px - 66px + 38px);
     }
     /*.profile__title::after{*/
     /*    content: url("../../../images/pencil-18x18.svg");*/
