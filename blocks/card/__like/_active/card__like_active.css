@@ -1,5 +1,3 @@
 .card__like_active{
-    mask-image: url(../../../../images/active-heart.svg);
-    -webkit-mask-image: url(../../../../images/active-heart.svg);
-    background-color: black;
+    background-image: url(../../../../images/active-heart.svg);
 }

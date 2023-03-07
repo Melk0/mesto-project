@@ -10,6 +10,7 @@
     background-size: contain;
     background-color: #FFFFFF;
     border: none;
+    background-repeat: no-repeat;
 }
 
 .card__like:hover{
