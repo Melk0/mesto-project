@@ -14,14 +14,10 @@
     <main class="content">
       <section class="profile">
         <img src="./images/avatar-min.svg" alt="Фото улыбающегося мужчины в очках и красной шапке" class="profile__avatar">
-        <h1 class="profile__title">
-          Жак-Ив Кусто
-        </h1>
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button  type="button" class="profile__pencil" value="Изменить">
         </button>
-        <h2 class="profile__caption">
-          Исследователь океана
-        </h2>
+        <h2 class="profile__caption">Исследователь океана</h2>
         <button type="button" class="profile__button">
           <img class="button" src="./images/plus.svg" alt="Кнопка «Добавить»">
         </button>
@@ -67,13 +63,14 @@
         <input type="button" class="popup__close" value="Закрыть">
         <form class="form" name="edit-profile">
           <h2 class="form__title">Редактировать профиль</h2>
-          <input type="text" class="form__field" placeholder="Имя">
-          <input type="text" class="form__field" placeholder="Профессия">
+          <input type="text" class="form__field" placeholder="Имя" name="Name">
+          <input type="text" class="form__field" placeholder="Профессия" name="Profession">
           <button type="submit" class="form__button">Сохранить</button>
         </form>
       </div>
 
     </section>
   </div>
+  <script src="./scripts/main.js"/>
 </body>
 </html>
