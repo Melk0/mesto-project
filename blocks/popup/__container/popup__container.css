@@ -1,6 +1,6 @@
 .popup__container{
     position: relative;
-    width: 430px;
+    max-width: 430px;
     background: #FFFFFF;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
@@ -15,4 +15,8 @@
         width: 282px;
         margin: 105px auto 123px;
     }
+}
+
+.popup__container .popup_type_image{
+    max-width: 100%;
 }

@@ -1,0 +1,12 @@
+.card__delete{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    transition: opacity 1s;
+}
+
+.card__delete:hover{
+    opacity: .5;
+}

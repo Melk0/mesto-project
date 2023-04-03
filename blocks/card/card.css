@@ -5,6 +5,7 @@
     grid-template-columns:  1fr .3fr;
     background-color: white;
     border-radius: 10px;
+    position: relative;
 }
 
 @media screen and (max-width: 970px){

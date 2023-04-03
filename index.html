@@ -23,54 +23,53 @@
         </button>
       </section>
       <section class="cards">
-        <div class="card">
-          <img src="images/karachaevsk-min.png" alt="Старый разрушенный храм" class="card__image">
-          <h2 class="card__caption">Карачаевск</h2>
-          <button class="card__like card__like_active" type="button"></button>
-        </div>
-        <div class="card">
-          <img src="images/elbrus-min.png" alt="Горы вдалеке на фоне оранжевого неба" class="card__image">
-          <h2 class="card__caption">Гора Эльбрус</h2>
-          <button class="card__like" type="button"></button>
-        </div>
-        <div class="card">
-          <img src="images/dombay-min.svg" alt="Горная вершина на фоне леса" class="card__image">
-          <h2 class="card__caption">Домбай</h2>
-          <button class="card__like" type="button"></button>
-        </div>
-        <div class="card">
-          <img src="images/elbrus-min.png" alt="Горы вдалеке на фоне оранжевого неба" class="card__image">
-          <h2 class="card__caption">Гора Эльбрус</h2>
-          <button class="card__like" type="button"></button>
-        </div>
-        <div class="card">
-          <img src="images/dombay-min.svg" alt="Горная вершина на фоне леса" class="card__image">
-          <h2 class="card__caption">Домбай</h2>
-          <button class="card__like" type="button"></button>
-        </div>
-        <div class="card">
-          <img src="images/karachaevsk-min.png" alt="Старый разрушенный храм" class="card__image">
-          <h2 class="card__caption">Карачаево-Черкессия</h2>
-          <button class="card__like" type="button"></button>
-        </div>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2023 Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup_type_edit">
       <div class="popup__container">
         <input type="button" class="popup__close" value="Закрыть">
         <form class="form" name="edit-profile">
           <h2 class="form__title">Редактировать профиль</h2>
-          <input type="text" class="form__field" placeholder="Имя" name="Name">
-          <input type="text" class="form__field" placeholder="Профессия" name="Profession">
+          <input type="text" class="form__field" placeholder="Имя">
+          <input type="text" class="form__field" placeholder="Профессия">
           <button type="submit" class="form__button">Сохранить</button>
         </form>
       </div>
-
+    </section>
+    <section class="popup popup_type_add">
+      <div class="popup__container">
+        <input type="button" class="popup__close" value="Закрыть">
+        <form class="form" name="add-card">
+          <h2 class="form__title">Новое место</h2>
+          <input type="text" class="form__field" placeholder="Название">
+          <input type="text" class="form__field" placeholder="Ссылка на картинку">
+          <button type="submit" class="form__button button-add">Создать</button>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup_type_image">
+      <div class="popup__container popup__image">
+        <input type="button" class="popup__close" value="Закрыть">
+        <img class=" popup__image" src="">
+        <p class="popup__description"></p>
+      </div>
     </section>
   </div>
+  <template id="card-template">
+    <div class="card">
+      <button class="card__button" type="button">
+        <img src="" alt="" class="card__image">
+      </button>
+      <button class="card__delete" type="button">
+        <img src="./images/Trash.svg" alt="Кнопка «Удалить»">
+      </button>
+      <h2 class="card__caption"></h2>
+      <button class="card__like" type="button"></button>
+    </div>
+  </template>
   <script src="./scripts/main.js"/>
 </body>
 </html>
