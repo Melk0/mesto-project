@@ -31,10 +31,10 @@
     <section class="popup popup_type_edit">
       <div class="popup__container">
         <input type="button" class="popup__close" value="Закрыть">
-        <form class="form" name="edit-profile">
+        <form class="form" id = "edit-profile" name="edit-profile">
           <h2 class="form__title">Редактировать профиль</h2>
-          <input type="text" class="form__field" placeholder="Имя">
-          <input type="text" class="form__field" placeholder="Профессия">
+          <input type="text" class="form__field"  id="name" placeholder="Имя">
+          <input type="text" class="form__field" id="profession" placeholder="Профессия">
           <button type="submit" class="form__button">Сохранить</button>
         </form>
       </div>
@@ -42,10 +42,10 @@
     <section class="popup popup_type_add">
       <div class="popup__container">
         <input type="button" class="popup__close" value="Закрыть">
-        <form class="form" name="add-card">
+        <form class="form" id = "add-card" name="add-card">
           <h2 class="form__title">Новое место</h2>
-          <input type="text" class="form__field" placeholder="Название">
-          <input type="text" class="form__field" placeholder="Ссылка на картинку">
+          <input type="text" class="form__field" id="title" placeholder="Название">
+          <input type="text" class="form__field" id="link" placeholder="Ссылка на картинку">
           <button type="submit" class="form__button button-add">Создать</button>
         </form>
       </div>
@@ -53,7 +53,7 @@
     <section class="popup popup_type_image">
       <div class="popup__container popup__image">
         <input type="button" class="popup__close" value="Закрыть">
-        <img class=" popup__image" src="">
+        <img class="image" src="">
         <p class="popup__description"></p>
       </div>
     </section>
