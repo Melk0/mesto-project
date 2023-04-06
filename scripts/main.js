@@ -11,8 +11,10 @@ const fieldTitle = document.querySelector("#title");
 const fieldLink = document.querySelector("#link");
 const saveButton = document.querySelector(".form__button");
 const cards = document.querySelector(".cards");
-const popupImage = document.querySelector(".popup__image");
-let closeButtons = document.querySelectorAll(".popup__close");
+const popupImage = document.querySelector(".popup_type_image");
+const closeButtons = document.querySelectorAll(".popup__close");
+const image = popupImage.querySelector(".image");
+const description = popupImage.querySelector(".popup__description");
 const initialCards = [
     {
         name: 'Архыз',
@@ -45,9 +47,6 @@ function init(initArray) {
     for (let i = initArray.length-1; i >= 0 ; i--) {
         const card = createCard(initArray[i]);
         cards.prepend(card);
-        card.querySelector(".card__like").addEventListener("click", like);
-        card.querySelector(".card__delete").addEventListener("click", deleteCard);
-        card.querySelector(".card__button").addEventListener("click", () => openImage(initArray[i]));
     }
 }
 
@@ -69,7 +68,7 @@ function saveProfileInfo(e){
 
 function saveCard(e){
     e.preventDefault();
-    let temp =[];
+    const temp =[];
     temp.push({
         name: fieldTitle.value,
         link: fieldLink.value
@@ -81,12 +80,15 @@ function saveCard(e){
 }
 
 function createCard(elem){
-    let temp = document.querySelector("#card-template").content;
-    let card = temp.querySelector(".card").cloneNode(true);
+    const temp = document.querySelector("#card-template").content;
+    const card = temp.querySelector(".card").cloneNode(true);
     const cardImage = card.querySelector(".card__image")
     cardImage.src = elem.link;
     cardImage.alt = elem.name;
     card.querySelector(".card__caption").textContent = elem.name;
+    card.querySelector(".card__like").addEventListener("click", like);
+    card.querySelector(".card__delete").addEventListener("click", deleteCard);
+    card.querySelector(".card__button").addEventListener("click", () => openImage(elem));
     return card;
 }
 
@@ -99,17 +101,14 @@ function deleteCard(e){
 }
 
 function openImage(item){
-    openPopup(popupImage.closest(".popup"));
-    const image = popupImage.querySelector(".image")
+    openPopup(popupImage);
     image.src = item.link;
     image.alt = item.name;
-    popupImage.querySelector(".popup__description").textContent = item.name;
-    popupOpened = popupImage;
+    description.textContent = item.name;
 }
 
 init(initialCards);
 
-document.querySelector(".button-add").addEventListener("click", saveCard);
 document.querySelector("#add-card").addEventListener("submit", saveCard);
 document.querySelector("#edit-profile").addEventListener("submit", saveProfileInfo);
 editButton.addEventListener("click", () =>
@@ -121,7 +120,6 @@ editButton.addEventListener("click", () =>
 
 addButton.addEventListener("click", () => openPopup(popupAdd));
 
-saveButton.addEventListener("click", saveProfileInfo);
 closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
     button.addEventListener('click', () => closePopup(popup));
