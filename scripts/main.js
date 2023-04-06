@@ -9,7 +9,6 @@ const fieldName = document.querySelector("#name");
 const fieldProfession = document.querySelector("#profession");
 const fieldTitle = document.querySelector("#title");
 const fieldLink = document.querySelector("#link");
-const saveButton = document.querySelector(".form__button");
 const cards = document.querySelector(".cards");
 const popupImage = document.querySelector(".popup_type_image");
 const closeButtons = document.querySelectorAll(".popup__close");
