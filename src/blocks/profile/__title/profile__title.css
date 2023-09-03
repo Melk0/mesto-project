@@ -16,7 +16,7 @@
 }
 
 /*.profile__title::after{*/
-/*    content: url("../../../images/pencil-min.svg");*/
+/*    content: url("../../.<%=require('./images/pencil-min.svg");*/
 /*    margin-left: 9px;*/
 /*}*/
 
@@ -36,7 +36,7 @@
         max-width: calc(100% - 65px - 66px + 38px);
     }
     /*.profile__title::after{*/
-    /*    content: url("../../../images/pencil-18x18.svg");*/
+    /*    content: url("../../.<%=require('./images/pencil-18x18.svg");*/
     /*    margin-right: 18px;*/
     /*    margin-left: 0;*/
     /*}*/

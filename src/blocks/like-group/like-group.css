@@ -1,0 +1,8 @@
+.like-group{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    color: black;
+    max-height: 35px;
+    align-self: center;
+}
