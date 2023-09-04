@@ -41,4 +41,5 @@
 @import url(../blocks/image/image.css);
 @import url(../blocks/like-group/like-group.css);
 @import url(../blocks/card/__like-indicator/card__like-indicator);
+@import url(../blocks/profile/__overlay/profile__overlay);
 

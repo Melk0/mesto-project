@@ -7,6 +7,7 @@ export const popupAdd = document.querySelector(".popup_type_add");
 export const popupImage = document.querySelector(".popup_type_image");
 export const popupDelete = document.querySelector(".popup_type_delete");
 export const closeButtons = document.querySelectorAll(".popup__close");
+export const popupAvatarEdit = document.querySelector(".popup_type_avatar-edit");
 
 const image = popupImage.querySelector(".image");
 const description = popupImage.querySelector(".popup__description");
@@ -40,6 +41,8 @@ function closePopupEsc(evt) {
         closePopup(popupOpened);
     }
 }
+
+
 
 
 

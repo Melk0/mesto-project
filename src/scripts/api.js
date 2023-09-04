@@ -105,3 +105,21 @@ export function downLike(id){
         return Promise.reject(`Ошибка: ${res.status}`);
     });
 }
+
+export function editAvatar(link){
+    fetch(`https://nomoreparties.co/v1/plus-cohort-28/users/me/avatar`, {
+        method: 'PATCH',
+        headers: {
+            authorization: myToken,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            avatar:link
+        })
+    }).then(res => {
+        if (res.ok) {
+            return res.json();
+        }else
+        return Promise.reject(`Ошибка: ${res.status}`);
+    });
+}

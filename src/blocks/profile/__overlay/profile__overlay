@@ -1,0 +1,22 @@
+.profile__overlay{
+    grid-column: 1/1;
+    grid-row: 1/-1;
+    align-self: center;
+    z-index: 2;
+    background-color: #000000CC;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+@media screen and (max-width: 1279px){
+    .profile__overlay{
+        grid-column: 1/-1;
+        grid-row: 1/1;
+    }
+}
+
+.profile__overlay:hover{
+    background-image: url(../../../images/pencil-without-frame.png);
+    background-size: 26px;
+}

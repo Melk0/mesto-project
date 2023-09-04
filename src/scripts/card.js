@@ -1,8 +1,9 @@
-import {openPopup, closePopup, openImage, popupEdit, closeButtons, popupOpened, popupAdd, popupDelete} from "./modal"
-import {getInfo, setProfile, setCard, getCards, deleteCardApi, upLike, downLike} from "./api"
+import {openPopup, closePopup, openImage, popupEdit, closeButtons, popupOpened, popupAdd, popupDelete, popupAvatarEdit} from "./modal"
+import {getInfo, setProfile, setCard, getCards, deleteCardApi, upLike, downLike,editAvatar} from "./api"
 
 export const fieldTitle = document.querySelector("#title");
 const fieldLink = document.querySelector("#link");
+const avatarLink = document.querySelector("#avatar-link");
 const cards = document.querySelector(".cards");
 const name = document.querySelector(".profile__title");
 const profession = document.querySelector(".profile__caption");
@@ -10,8 +11,11 @@ const fieldName = document.querySelector("#name");
 const fieldProfession = document.querySelector("#profession");
 const editButton = document.querySelector(".profile__pencil");
 const addButton = document.querySelector(".profile__button");
+const avatarSaveButton = document.querySelector(".button-avatar-edit");
 const deleteButton = document.querySelector(".button__delete");
 const avatar = document.querySelector(".profile__avatar");
+const editAvatarButton = document.querySelector(".profile__overlay");
+
 let data;
 
 export async function init(initArray) {
@@ -30,12 +34,14 @@ export async function saveCard(e){
         name: fieldTitle.value,
         link: fieldLink.value
     });
-    setCard(fieldTitle.value, fieldLink.value)
+    addButton.value = "Сохранение"
+    await setCard(fieldTitle.value, fieldLink.value)
     const cards = await getCards()
     init(cards);
     fieldTitle.value = "";
     fieldLink.value = "";
     closePopup(popupOpened);
+    addButton.value = "Сохранить"
 }
 
 function createCard(elem){
@@ -80,17 +86,21 @@ async function like(e){
         
 }
 
-function deleteCard(id){
-    deleteCardApi(id);
+async function deleteCard(id){
+    deleteButton.value = "Удаление"
+    await deleteCardApi(id);
     document.getElementById(`${id}`).remove()
     closePopup(popupOpened)
+    deleteButton.value = "Да"
 }
 
 export async function saveProfileInfo(e){
     e.preventDefault();
+    editButton.value = "Сохранение"
     await setProfile(fieldName.value, fieldProfession.value)
     getProfile()
     closePopup(popupOpened);
+    editButton.value = "Сохранить"
 }
 
 editButton.addEventListener("click", () =>
@@ -111,6 +121,17 @@ addButton.addEventListener("click", () => {
 deleteButton.addEventListener("click", () => {
     deleteCard(popupDelete.dataset.id)
 })
+
+editAvatarButton.addEventListener("click", () => {
+    openPopup(popupAvatarEdit);
+})
+
+avatarSaveButton.addEventListener("click", async (e) => {
+    await editAvatar(avatarLink.value);
+    closePopup(popupOpened);
+    await getProfile();
+})
+
 async function getProfile(){
     let info;
     await getInfo().then(data => {
@@ -121,7 +142,6 @@ async function getProfile(){
         info = data;
         console.log(info);
     })
-    console.log(info);
     return info;
 }
 

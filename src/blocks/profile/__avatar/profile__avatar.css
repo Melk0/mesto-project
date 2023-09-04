@@ -2,15 +2,13 @@
     margin: 0;
     width: 120px;
     border-radius: 50%;
-    grid-column: 1/1;
-    grid-row: 1/-1;
+    object-fit: cover;
     align-self: center;
     height: 120px;
+    z-index: 0;
+    
 }
 
-@media screen and (max-width: 1279px){
-    .profile__avatar{
-        grid-column: 1/-1;
-        grid-row: 1/1;
-    }
+.profile__avatar:hover{
+    opacity: 0.4;
 }
