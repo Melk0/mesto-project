@@ -16,10 +16,10 @@
         <button type="button" class="profile__overlay">
           <img src="<%=require('./images/avatar-min.svg')%>" alt="Фото улыбающегося мужчины в очках и красной шапке" class="profile__avatar">
         </button>
-        <h1 class="profile__title"></h1>
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button  type="button" class="profile__pencil" value="Изменить">
         </button>
-        <h2 class="profile__caption"></h2>
+        <h2 class="profile__caption">Исследователь океана</h2>
         <button type="button" class="profile__button">
           <img class="button" src="<%=require('./images/plus.svg')%>" alt="Кнопка «Добавить»">
         </button>
@@ -79,6 +79,7 @@
           class="form__field" 
           id="link" 
           placeholder="Ссылка на картинку"
+          data-error-message="Введите адрес сайта"
           required>
           <span class="form__field-error link-error" ></span>
           <button type="submit" class="form__button button-add form__button_type_disabled">Создать</button>
@@ -127,7 +128,7 @@
       <h2 class="card__caption"></h2>
       <div class="like-group">
         <button class="card__like" type="button"></button>
-        <p class="card__like-indicator"></p>
+        <p class="card__like-indicator">0</p>
       </div>
     </div>
   </template>
