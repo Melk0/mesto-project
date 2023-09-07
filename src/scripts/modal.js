@@ -5,7 +5,7 @@ export const popupImage = document.querySelector(".popup_type_image");
 export const popupDelete = document.querySelector(".popup_type_delete");
 export const closeButtons = document.querySelectorAll(".popup__close");
 export const popupAvatarEdit = document.querySelector(".popup_type_avatar-edit");
-
+export const popups = document.querySelectorAll(".popup");
 const image = popupImage.querySelector(".image");
 const description = popupImage.querySelector(".popup__description");
 
@@ -15,21 +15,11 @@ export function openPopup(popup){
     popup.classList.add("popup_opened");
     popupOpened = popup;
     document.addEventListener('keydown', closePopupEsc);
-    popupOpened.addEventListener("click", (evt) => {
-        if (evt.currentTarget === evt.target) {
-            closePopup(popupOpened)
-        }
-    })
 }
 
 export function closePopup(popup){
     popup.classList.remove("popup_opened");
     document.removeEventListener('keydown', closePopupEsc);
-    popupOpened.removeEventListener("click", (evt) => {
-        if (evt.currentTarget === evt.target) {
-            closePopup(popupOpened)
-        }
-    })
 }
 
 export function openImage(item){

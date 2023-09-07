@@ -5,15 +5,15 @@ import {addButton} from "./main"
 export const fieldTitle = document.querySelector("#title");
 const fieldLink = document.querySelector("#link");
 const cards = document.querySelector(".cards");
-
+const addButtonSubmit = document.querySelector(".button-add")
 // let data;
 
 export async function init(initArray) {
     // data = await getProfile();
-    for (let i = initArray.length-1; i >= 0 ; i--) {
-        const card = createCard(initArray[i]);
+    initArray.forEach((i) =>{
+        const card = createCard(i);
         cards.prepend(card);
-    }
+    })
 }
 
 
@@ -36,15 +36,15 @@ export async function init(initArray) {
 
 export function saveCard(e){
     e.preventDefault();
-    const temp =[];
-    temp.push({
+    const temp =[{
         name: fieldTitle.value,
         link: fieldLink.value
-    });
+    }];
     init(temp);
     fieldTitle.value = "";
     fieldLink.value = "";
-    document.querySelector(".button-add").classList.add("form__button_type_disabled")
+    e.submitter.classList.add("form__button_type_disabled")
+    e.submitter.disabled =true
     closePopup(popupOpened);
 }
 

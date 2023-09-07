@@ -1,13 +1,14 @@
 .form__field-error{
-opacity: 0;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 15px;
-margin: 0px 34px 17px;
-width: calc(100% - 68px);
-color: #FF0000;
+    display: inline-block;
+    opacity: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0px 34px 17px;
+    width: calc(100% - 68px); 
+    color: #FF0000;
 }
 
 @media screen and (max-width: 767px) {

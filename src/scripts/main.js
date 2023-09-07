@@ -2,7 +2,7 @@ import '../pages/index.css';
 import {enableValidation} from "./validate"
 import {init, saveCard, deleteCard} from "./card"
 import {saveProfileInfo} from "./Utils"
-import {openPopup, closePopup, openImage, popupEdit, popupOpened, popupAdd, popupDelete, popupAvatarEdit} from "./modal"
+import {popups, openPopup, closePopup, openImage, popupEdit, popupOpened, popupAdd, popupDelete, popupAvatarEdit, closeButtons} from "./modal"
 
 // import {getCards} from "./api"
 
@@ -17,8 +17,15 @@ export const editAvatarButton = document.querySelector(".profile__overlay");
 export const avatarSaveButton = document.querySelector(".button-avatar-edit");
 export const addButton = document.querySelector(".profile__button");
 export const deleteButton = document.querySelector(".button__delete");
-const closeButtons = document.querySelectorAll(".popup__close"); 
 
+const enableValidationSettings= ({
+    formSelector: '.form',
+    inputSelector: '.form__field',
+    submitButtonSelector: '.form__button',
+    inactiveButtonClass: 'form__button_type_disabled',
+    inputErrorClass: 'form__field_type_error',
+    errorClass: 'form__field-error'
+  }); 
 // const cards = await getCards()
 const initialCards = [
     {
@@ -57,6 +64,14 @@ closeButtons.forEach((button) => {
     button.addEventListener('click', () => closePopup(popup));
 });
 
+popups.forEach((elem) => {
+    elem.addEventListener('click', (e) => {
+        if (e.currentTarget === e.target) {
+            closePopup(popupOpened)
+        }
+    }); 
+});
+
 // avatarSaveButton.addEventListener("click", async (e) => {
 //     await editAvatar(avatarLink.value);
 //     closePopup(popupOpened);
@@ -78,4 +93,4 @@ editButton.addEventListener("click", () =>
     fieldProfession.value = profession.textContent;
 });
 
-enableValidation();
+enableValidation(enableValidationSettings);
