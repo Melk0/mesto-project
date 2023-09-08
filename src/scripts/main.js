@@ -1,10 +1,10 @@
 import '../pages/index.css'; 
 import {enableValidation} from "./validate"
 import {init, saveCard, deleteCard} from "./card"
-import {saveProfileInfo} from "./Utils"
+import {getProfile, saveProfileInfo} from "./Utils"
 import {popups, openPopup, closePopup, openImage, popupEdit, popupOpened, popupAdd, popupDelete, popupAvatarEdit, closeButtons} from "./modal"
 
-// import {getCards} from "./api"
+import {editAvatar} from "./api"
 
 export const name = document.querySelector(".profile__title");
 export const profession = document.querySelector(".profile__caption");
@@ -25,36 +25,9 @@ const enableValidationSettings= ({
     inactiveButtonClass: 'form__button_type_disabled',
     inputErrorClass: 'form__field_type_error',
     errorClass: 'form__field-error'
-  }); 
-// const cards = await getCards()
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+}); 
 
-init(initialCards);
+init();
 
 document.querySelector("#add-card").addEventListener("submit", saveCard);
 document.querySelector("#edit-profile").addEventListener("submit", saveProfileInfo);
@@ -72,11 +45,16 @@ popups.forEach((elem) => {
     }); 
 });
 
-// avatarSaveButton.addEventListener("click", async (e) => {
-//     await editAvatar(avatarLink.value);
-//     closePopup(popupOpened);
-//     await getProfile();
-// })
+avatarSaveButton.addEventListener("click", async (e) => {
+    await editAvatar(avatarLink.value);
+    getProfile()
+    closePopup(popupOpened);
+    init();
+})
+
+deleteButton.addEventListener("click", () => {
+    deleteCard(popupDelete.dataset.id)
+})
 
 addButton.addEventListener("click", () => {
     openPopup(popupAdd);
