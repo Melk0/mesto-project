@@ -1,7 +1,7 @@
 import '../pages/index.css'; 
 import {enableValidation} from "./validate"
 import {init, saveCard, deleteCard} from "./card"
-import {getProfile, saveProfileInfo} from "./Utils"
+import {getProfile, saveProfileInfo, errorOutput} from "./Utils"
 import {popups, openPopup, closePopup, openImage, popupEdit, popupOpened, popupAdd, popupDelete, popupAvatarEdit, closeButtons} from "./modal"
 
 import {editAvatar} from "./api"
@@ -17,7 +17,7 @@ export const editAvatarButton = document.querySelector(".profile__overlay");
 export const avatarSaveButton = document.querySelector(".button-avatar-edit");
 export const addButton = document.querySelector(".profile__button");
 export const deleteButton = document.querySelector(".button__delete");
-
+export let data = null;
 const enableValidationSettings= ({
     formSelector: '.form',
     inputSelector: '.form__field',
@@ -27,6 +27,7 @@ const enableValidationSettings= ({
     errorClass: 'form__field-error'
 }); 
 
+data = getProfile()
 init();
 
 document.querySelector("#add-card").addEventListener("submit", saveCard);
@@ -45,11 +46,14 @@ popups.forEach((elem) => {
     }); 
 });
 
-avatarSaveButton.addEventListener("click", async (e) => {
-    await editAvatar(avatarLink.value);
-    getProfile()
-    closePopup(popupOpened);
-    init();
+avatarSaveButton.addEventListener("click", (e) => {
+    editAvatar(avatarLink.value).then((res)=>{
+        data=res;
+        getProfile (data)
+    }).catch(errorOutput)
+    .finally(()=>{
+        closePopup(popupOpened);
+    })    
 })
 
 deleteButton.addEventListener("click", () => {

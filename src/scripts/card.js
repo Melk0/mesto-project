@@ -1,36 +1,37 @@
-import {openPopup, closePopup, openImage, popupEdit, closeButtons, popupOpened, popupAdd, popupDelete, popupAvatarEdit} from "./modal"
-import {getInfo, setProfile, setCard, getCards, deleteCardApi, upLike, downLike,editAvatar} from "./api"
-import {addButton, deleteButton} from "./main"
-import {getProfile} from "./Utils"
+import {openPopup, closePopup, openImage, popupOpened, popupDelete} from "./modal"
+import {setCard, getCards, deleteCardApi, upLike, downLike} from "./api"
+import {addButton, deleteButton, data} from "./main"
+import {errorOutput}from "./Utils"
 
 export const fieldTitle = document.querySelector("#title");
 const fieldLink = document.querySelector("#link");
 const cards = document.querySelector(".cards");
-const addButtonSubmit = document.querySelector(".button-add")
 
-let data;
-
-export async function init() {
-    data = await getProfile();
-    const initArray = await getCards()
-    initArray.forEach((i) =>{
-        const card = createCard(i);
-        cards.prepend(card);
-    })
+export function init() {
+    getCards().then(res => {
+        res.forEach((i) =>{
+            const card = createCard(i);
+            cards.prepend(card);
+        })
+    }).catch(errorOutput)
 }
 
 
-export async function saveCard(e){
+export function saveCard(e){
     e.preventDefault();
-    addButton.value = "Сохранение"
-    await setCard(fieldTitle.value, fieldLink.value)
-    init();
-    fieldTitle.value = "";
-    fieldLink.value = "";
-    closePopup(popupOpened);
-    e.submitter.classList.add("form__button_type_disabled")
-    e.submitter.disabled =true
-    addButton.value = "Сохранить"
+    setCard(fieldTitle.value, fieldLink.value).then((res) =>{
+        addButton.value = "Сохранение"
+        const card = createCard(res);
+        cards.append(card);
+    }).catch(errorOutput).finally(()=>{
+        fieldTitle.value = "";
+        fieldLink.value = "";
+        closePopup(popupOpened);
+        e.submitter.classList.add("form__button_type_disabled")
+        e.submitter.disabled =true
+        addButton.value = "Сохранить"
+    })   
+    
 }
 
 function createCard(elem){
@@ -58,26 +59,31 @@ function createCard(elem){
     return card;
 }
 
-async function like(e){
+function like(e){
     e.target.classList.toggle("card__like_active");
     const likeIndicator = e.target.nextElementSibling;
     if(e.target.classList.contains("card__like_active"))
     {
-        await upLike(e.target.offsetParent.id)
-        likeIndicator.textContent = Number(likeIndicator.textContent) + 1
+        upLike(e.target.offsetParent.id).then((res)=>{
+            likeIndicator.textContent = Number(likeIndicator.textContent) + 1
+        }).catch(errorOutput)
+        
     }
     else
     {
-        await downLike(e.target.offsetParent.id);
-        likeIndicator.textContent = Number(likeIndicator.textContent) - 1
+        downLike(e.target.offsetParent.id).then((res)=>{
+            likeIndicator.textContent = Number(likeIndicator.textContent) - 1
+        }).catch(errorOutput);
     }
         
 }
 
-export async function deleteCard(id){
-    deleteButton.value = "Удаление"
-    await deleteCardApi(id);
-    document.getElementById(`${id}`).remove()
-    closePopup(popupOpened)
-    deleteButton.value = "Да"
+export function deleteCard(id){
+    deleteCardApi(id).then(res=>{
+        deleteButton.value = "Удаление"
+        document.getElementById(`${id}`).remove()
+    }).catch(errorOutput).finally(()=>{
+        closePopup(popupOpened)
+        deleteButton.value = "Да"
+    });
 }
