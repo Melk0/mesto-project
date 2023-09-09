@@ -56,7 +56,7 @@
           required pattern="^^[a-zA-Zа-яА-Яё\s\-]+"
           data-error-message="Поле может содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы">
           <span class="form__field-error profession-error" ></span>
-          <button type="submit" class="form__button button-edit" disabled>Сохранить</button>
+          <button type="submit" class="form__button button-edit form__button_type_disabled" disabled>Сохранить</button>
         </form>
       </div>
     </section>
@@ -82,7 +82,7 @@
           data-error-message="Введите адрес сайта"
           required>
           <span class="form__field-error link-error" ></span>
-          <button type="submit" class="form__button button-add form__button_type_disabled" disabled>Создать</button>
+          <button type="submit" class="form__button button-add form__button_type_disabled" id="addButton" disabled>Создать</button>
         </form>
       </div>
     </section>
@@ -112,7 +112,7 @@
           placeholder="Ссылка на картинку"
           required>
           <span class="form__field-error avatar-link-error" ></span>
-          <button type="submit" class="form__button button-avatar-edit form__button_type_disabled" disabled>Сохранить</button>
+          <button id="editAvatarButton" type="submit" class="form__button button-avatar-edit form__button_type_disabled" disabled>Сохранить</button>
         </form>
       </div>
     </section>

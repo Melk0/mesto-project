@@ -1,15 +1,8 @@
-
-export const popupEdit = document.querySelector(".popup_type_edit");
-export const popupAdd = document.querySelector(".popup_type_add");
-export const popupImage = document.querySelector(".popup_type_image");
-export const popupDelete = document.querySelector(".popup_type_delete");
-export const closeButtons = document.querySelectorAll(".popup__close");
-export const popupAvatarEdit = document.querySelector(".popup_type_avatar-edit");
-export const popups = document.querySelectorAll(".popup");
+import {popupImage} from "./constants"
 const image = popupImage.querySelector(".image");
 const description = popupImage.querySelector(".popup__description");
 
-export let popupOpened;
+let  popupOpened
 
 export function openPopup(popup){
     popup.classList.add("popup_opened");
@@ -17,8 +10,8 @@ export function openPopup(popup){
     document.addEventListener('keydown', closePopupEsc);
 }
 
-export function closePopup(popup){
-    popup.classList.remove("popup_opened");
+export function closePopup(){
+    popupOpened.classList.remove("popup_opened");
     document.removeEventListener('keydown', closePopupEsc);
 }
 

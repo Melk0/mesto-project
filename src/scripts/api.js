@@ -1,4 +1,4 @@
-import { checkResponse, request, config} from "./Utils";
+import {request, config} from "./utils";
 
 export function getInfo(){
     return request('/users/me', config)

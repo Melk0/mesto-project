@@ -1,23 +1,14 @@
 import '../pages/index.css'; 
 import {enableValidation} from "./validate"
-import {init, saveCard, deleteCard} from "./card"
-import {getProfile, saveProfileInfo, errorOutput} from "./Utils"
-import {popups, openPopup, closePopup, openImage, popupEdit, popupOpened, popupAdd, popupDelete, popupAvatarEdit, closeButtons} from "./modal"
-
+import {getInitialCards, saveCard, deleteCard} from "./card"
+import {handleError} from "./utils"
+import {getProfile, saveProfileInfo, setUserInfo} from "./profile"
+import {openPopup, closePopup} from "./modal"
 import {editAvatar} from "./api"
+import {name, profession, fieldName, fieldProfession, editButton, avatarLink, editAvatarButton, avatarSaveButton, addButton, deleteButton, popups, closeButtons, popupEdit, popupAdd, popupDelete, popupAvatarEdit} from "./constants"
 
-export const name = document.querySelector(".profile__title");
-export const profession = document.querySelector(".profile__caption");
-export const fieldName = document.querySelector("#name");
-export const fieldProfession = document.querySelector("#profession");
-export const editButton = document.querySelector(".profile__pencil");
-export const avatarLink = document.querySelector("#avatar-link");
-export const avatar = document.querySelector(".profile__avatar");
-export const editAvatarButton = document.querySelector(".profile__overlay");
-export const avatarSaveButton = document.querySelector(".button-avatar-edit");
-export const addButton = document.querySelector(".profile__button");
-export const deleteButton = document.querySelector(".button__delete");
-export let data = null;
+export let data = {};
+
 const enableValidationSettings= ({
     formSelector: '.form',
     inputSelector: '.form__field',
@@ -27,34 +18,42 @@ const enableValidationSettings= ({
     errorClass: 'form__field-error'
 }); 
 
-data = getProfile()
-init();
+getProfile().then(res => {
+    data = res
+}).catch(handleError)
+
+getInitialCards();
+
+Promise.all([getProfile(), getInitialCards()]).then(([res]) => {
+    data = res
+}).catch(handleError)
 
 document.querySelector("#add-card").addEventListener("submit", saveCard);
 document.querySelector("#edit-profile").addEventListener("submit", saveProfileInfo);
+document.querySelector("#edit-avatar").addEventListener("submit", (e) => {
+    e.submitter.textContent = "Сохранение..."
+    editAvatar(avatarLink.value).then((res)=>{
+        data=res;
+        setUserInfo (data)
+    }).catch(handleError)
+    .finally(()=>{
+        e.submitter.textContent = "Сохранить"
+        closePopup();
+    })
+});
 
 closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
-    button.addEventListener('click', () => closePopup(popup));
+    button.addEventListener('click', () => closePopup());
 });
 
 popups.forEach((elem) => {
     elem.addEventListener('click', (e) => {
         if (e.currentTarget === e.target) {
-            closePopup(popupOpened)
+            closePopup()
         }
     }); 
 });
-
-avatarSaveButton.addEventListener("click", (e) => {
-    editAvatar(avatarLink.value).then((res)=>{
-        data=res;
-        getProfile (data)
-    }).catch(errorOutput)
-    .finally(()=>{
-        closePopup(popupOpened);
-    })    
-})
 
 deleteButton.addEventListener("click", () => {
     deleteCard(popupDelete.dataset.id)
