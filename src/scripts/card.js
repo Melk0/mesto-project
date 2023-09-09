@@ -51,7 +51,6 @@ function createCard(elem){
     if(data._id!==elem.owner._id){
         cardDelete.remove();
     }
-    console.log(data._id);
     if(elem.likes.find(elem => elem._id == data._id))
     {
         cardLike.classList.add("card__like_active")
@@ -61,7 +60,6 @@ function createCard(elem){
 
 function like(e){
     const likeIndicator = e.target.nextElementSibling;
-    console.log(Boolean(e.target.classList))
     if(!e.target.classList.contains("card__like_active"))
     {
         upLike(e.target.offsetParent.id).then((res)=>{

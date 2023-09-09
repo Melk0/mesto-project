@@ -13,7 +13,6 @@ export function getProfile(){
 }
 
 export function saveProfileInfo(e){
-    console.log(e.submitter);
     e.submitter.textContent = "Сохранение..."
     e.preventDefault();
     setProfile(e.target.name.value, e.target.profession.value).then(()=>{
