@@ -25,7 +25,7 @@ export function openImage(item){
 
 function closePopupEsc(evt) {
     if (evt.key === 'Escape') {
-        closePopup(popupOpened);
+        closePopup();
     }
 }
 

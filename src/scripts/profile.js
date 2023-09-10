@@ -1,16 +1,9 @@
 import {closePopup} from "./modal"
-import {name, profession, editButton, avatar} from "./constants"
-import {getInfo, setProfile} from "./api"
+import {name, profession, avatar} from "./constants"
+import {setProfile} from "./api"
 import {handleError} from "./utils"
 
-export function getProfile(){
-    return getInfo().then(data => {
-        name.textContent = data.name;
-        profession.textContent = data.about;
-        avatar.src = data.avatar;
-        return data;
-    }).catch(handleError)
-}
+export let data = {};
 
 export function saveProfileInfo(e){
     e.submitter.textContent = "Сохранение..."
@@ -29,7 +22,8 @@ export function saveProfileInfo(e){
 }
 
 export function setUserInfo(newData) {
-    name.textContent = newData.name;
-    profession.textContent = newData.about;
-    avatar.src = newData.avatar;
+    data = newData;
+    name.textContent = data.name;
+    profession.textContent = data.about;
+    avatar.src = data.avatar;
   }

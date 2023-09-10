@@ -2,17 +2,15 @@ import {openPopup, closePopup, openImage} from "./modal"
 import {setCard, getCards, deleteCardApi, upLike, downLike} from "./api"
 import {deleteButton, popupDelete} from "./constants"
 import {handleError}from "./utils"
-import {data}from "./main"
+import {data}from "./profile"
 
 const cards = document.querySelector(".cards");
 
-export function getInitialCards() {
-    getCards().then(res => {
-        res.forEach((i) =>{
-            const card = createCard(i);
-            cards.prepend(card);
-        })
-    }).catch(handleError)
+export function getInitialCards(initialArray) {
+    initialArray.forEach((i) =>{
+        const card = createCard(i);
+        cards.prepend(card);
+    })
 }
 
 
