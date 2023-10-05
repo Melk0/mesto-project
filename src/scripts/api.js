@@ -1,4 +1,4 @@
-import {request} from "./utils";
+import {request} from "./Utils";
 
 class Api {
     constructor(config) {
