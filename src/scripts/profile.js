@@ -1,6 +1,6 @@
 import {closePopup} from "./modal"
 import {name, profession, avatar} from "./constants"
-import {setProfile} from "./api"
+import Api from "./Api"
 import {handleError} from "./Utils"
 
 export let data = {};
